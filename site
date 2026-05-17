@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basillis Leads — Qualified Roofing Leads</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ed;
+    --accent: #d4501a;
+    --accent2: #e8c547;
+    --gray: #1a1a1a;
+    --muted: #6b6b6b;
+    --border: rgba(245,242,237,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px 22px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,80,26,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(232,197,71,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner { max-width: 900px; }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid rgba(212,80,26,0.4);
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.1s;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(245,242,237,0.6);
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.3s;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--accent);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 16px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.4s;
+  }
+
+  .hero-cta:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  .hero-cta svg { transition: transform 0.2s; }
+  .hero-cta:hover svg { transform: translateX(4px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 80px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.5s;
+  }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: var(--white);
+    letter-spacing: -1px;
+  }
+
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* SECTION BASE */
+  section { padding: 100px 48px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 52px);
+    letter-spacing: -2px;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+
+  /* HOW IT WORKS */
+  .how { background: var(--gray); }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+  }
+
+  .how-card {
+    background: var(--black);
+    padding: 48px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .how-card:hover { background: #111; }
+
+  .how-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 80px;
+    color: rgba(245,242,237,0.04);
+    position: absolute;
+    top: 16px; right: 24px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .how-icon {
+    width: 44px; height: 44px;
+    background: rgba(212,80,26,0.12);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .how-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .how-desc {
+    font-size: 14px;
+    color: rgba(245,242,237,0.5);
+    line-height: 1.7;
+  }
+
+  /* WHAT YOU GET */
+  .offer { background: var(--black); }
+
+  .offer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 64px;
+  }
+
+  .offer-list { list-style: none; }
+
+  .offer-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 16px;
+    color: rgba(245,242,237,0.8);
+    line-height: 1.5;
+  }
+
+  .offer-list li:first-child { border-top: 1px solid var(--border); }
+
+  .check {
+    width: 20px; height: 20px;
+    background: rgba(212,80,26,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .offer-highlight {
+    background: var(--gray);
+    border-radius: 8px;
+    padding: 48px;
+    border: 1px solid var(--border);
+  }
+
+  .offer-highlight .big {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 64px;
+    letter-spacing: -3px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .offer-highlight .big-label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .offer-highlight p {
+    font-size: 15px;
+    color: rgba(245,242,237,0.6);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  /* WHO IT'S FOR */
+  .for { background: var(--gray); }
+
+  .for-inner {
+    max-width: 640px;
+    margin-top: 32px;
+  }
+
+  .for-inner p {
+    font-size: 20px;
+    color: rgba(245,242,237,0.7);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .for-inner strong { color: var(--white); font-weight: 500; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--accent);
+    text-align: center;
+    padding: 100px 48px;
+  }
+
+  .cta-section h2 {
+    color: var(--white);
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 16px;
+  }
+
+  .cta-section p {
+    font-size: 18px;
+    color: rgba(245,242,237,0.75);
+    margin-bottom: 40px;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 16px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .cta-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 40px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .logo { font-size: 16px; }
+
+  footer p {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+
+  footer a:hover { color: var(--white); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    section { padding: 72px 24px; }
+    .how-grid { grid-template-columns: 1fr; }
+    .offer-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-stats { gap: 32px; flex-wrap: wrap; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Basillis<span>.</span></a>
+  <a href="#book" class="nav-cta">Book a Free Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Roofing Lead Generation</div>
+    <h1>More jobs.<br>Zero <em>retainers.</em></h1>
+    <p class="hero-sub">We generate qualified roofing leads for contractors across the US — homeowners ready for estimates within 30 days. You only pay per lead.</p>
+    <a href="#book" class="hero-cta">
+      Start Free 10-Day Trial
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">10<span>–</span>15</div>
+        <div class="stat-label">Leads per month</div>
+      </div>
+      <div>
+        <div class="stat-num">0<span>$</span></div>
+        <div class="stat-label">Fee for first 10 days</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-label">The Process</div>
+  <h2>How it works</h2>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <div class="how-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4501a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+      </div>
+      <div class="how-title">We run targeted ads</div>
+      <p class="how-desc">We run Facebook ads targeting homeowners in your service area who are actively looking for roofing work.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <div class="how-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4501a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+        </svg>
+      </div>
+      <div class="how-title">Leads get filtered</div>
+      <p class="how-desc">Every lead is verified — real project, real timeline, real homeowner in your area ready to get an estimate within 30 days.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <div class="how-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4501a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+      </div>
+      <div class="how-title">You receive the lead</div>
+      <p class="how-desc">Qualified leads land directly with you. You only pay for what you receive — no fluff, no dead contacts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="offer" id="offer">
+  <div class="section-label">The Offer</div>
+  <h2>What you get</h2>
+  <div class="offer-inner">
+    <ul class="offer-list">
+      <li>
+        <div class="check">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M2 5l2 2 4-4" stroke="#d4501a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        Pay per qualified lead — no monthly fees
+      </li>
+      <li>
+        <div class="check">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M2 5l2 2 4-4" stroke="#d4501a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        No monthly retainer, no contracts
+      </li>
+      <li>
+        <div class="check">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M2 5l2 2 4-4" stroke="#d4501a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        Homeowners in your service area, ready within 30 days
+      </li>
+      <li>
+        <div class="check">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M2 5l2 2 4-4" stroke="#d4501a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        10–15 qualified leads per month
+      </li>
+
+    </ul>
+    <div class="offer-highlight">
+      <div class="big">10</div>
+      <div class="big-label">Day free trial</div>
+      <p>Test the quality of leads before committing to anything. No fee on our end for the first 10 days — you just cover a small ad budget on your side.</p>
+      <a href="#book" class="hero-cta" style="font-size:14px; padding: 12px 24px;">
+        Start the trial
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="for" id="for">
+  <div class="section-label">Who We Work With</div>
+  <h2>Built for small<br>roofing contractors</h2>
+  <div class="for-inner">
+    <p>If you're a <strong>small owner-operated roofing business</strong> looking for a consistent flow of estimate requests — without hiring a marketing team or paying monthly fees — this is for you.</p>
+    <p>We work with contractors across the US in markets like <strong>Columbus, Indianapolis, Oklahoma City, San Antonio, Kansas City</strong> and more.</p>
+    <p>You focus on the work. <strong>We bring the leads.</strong></p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="book">
+  <h2>Ready to test it out?</h2>
+  <p>Book a free 15-minute call. No commitment, no pressure.</p>
+  <a href="YOUR_CAL_LINK_HERE" class="cta-btn">
+    Book a Free Call
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="logo">Basillis<span>.</span></a>
+  <p>© 2026 Basillis Leads. All rights reserved.</p>
+  <a href="mailto:nicholas@basillis.com">nicholas@basillis.com</a>
+</footer>
+
+</body>
+</html>
