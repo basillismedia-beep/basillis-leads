@@ -150,31 +150,6 @@ body {
   font-family: 'Cabinet Grotesk', sans-serif;
   font-weight: 400;
   overflow-x: hidden;
-  cursor: none;
-}
- 
-/* CUSTOM CURSOR */
-.cursor {
-  width: 10px; height: 10px;
-  background: var(--orange);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background 0.2s;
-}
- 
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1.5px solid var(--orange);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.12s ease, width 0.2s, height 0.2s;
-  opacity: 0.5;
 }
  
 /* NAV */
@@ -226,7 +201,6 @@ nav {
   border-radius: 100px;
   text-decoration: none;
   transition: all 0.2s;
-  cursor: none;
 }
  
 .btn-dark {
@@ -516,7 +490,6 @@ h1 em {
   border-radius: 100px;
   text-decoration: none;
   transition: all 0.2s;
-  cursor: none;
   position: relative;
 }
  
@@ -542,26 +515,91 @@ footer .logo span { color: var(--orange); }
   to { opacity: 1; transform: translateY(0); }
 }
  
+/* PAIN POINTS */
+.pain {
+  padding: 120px 56px;
+  background: var(--paper);
+}
+ 
+.pain h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: -3px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+ 
+.pain h2 em { font-style: normal; color: var(--orange); }
+ 
+.pain-sub {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.6;
+  margin-bottom: 56px;
+}
+ 
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+ 
+.pain-card {
+  background: var(--cream);
+  padding: 40px 36px;
+  position: relative;
+  transition: background 0.3s;
+}
+ 
+.pain-card:hover { background: var(--border); }
+body.dark .pain-card { background: #1a1816; }
+body.dark .pain-card:hover { background: #222018; }
+ 
+.pain-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+  display: block;
+}
+ 
+.pain-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+ 
+.pain-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+ 
 @media (max-width: 900px) {
-  nav { padding: 0 24px; }
-  .hero { padding: 120px 24px 80px; }
-  h1 { letter-spacing: -3px; }
-  .hero-sub-row { flex-direction: column; align-items: flex-start; }
+  nav { padding: 0 20px; }
+  .nav-link { display: none; }
+  .hero { padding: 100px 20px 60px; }
+  h1 { letter-spacing: -3px; font-size: clamp(44px, 10vw, 80px); }
+  .hero-sub-row { flex-direction: column; align-items: flex-start; gap: 28px; margin-top: 32px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; width: 100%; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
   .stats { grid-template-columns: 1fr; }
-  .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 36px 24px; }
-  .niches, .how, .cta-section { padding: 80px 24px; }
+  .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 20px; }
+  .pain, .niches, .how, .cta-section { padding: 72px 20px; }
+  .pain-grid { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .niche-grid { grid-template-columns: repeat(2, 1fr); }
-  footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
-  body { cursor: auto; }
-  .cursor, .cursor-ring { display: none; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 20px; }
+  .marquee-wrap { margin-top: 40px; }
+  .btn-cta-big { width: 100%; justify-content: center; }
+  .theme-toggle { display: block; }
 }
 </style>
 </head>
 <body>
  
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="ring"></div>
+<div class="cursor" id="cursor" style="display:none"></div>
+<div class="cursor-ring" id="ring" style="display:none"></div>
 <script>document.body.classList.add('dark');</script>
  
 <nav>
@@ -627,6 +665,34 @@ footer .logo span { color: var(--orange); }
   </div>
 </div>
  
+<section class="pain" id="pain">
+  <div class="section-label">Sound Familiar?</div>
+  <h2>The problems <em>we fix</em></h2>
+  <p class="pain-sub">If you're a home improvement contractor, you've probably dealt with at least one of these.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <span class="pain-icon">🎢</span>
+      <div class="pain-title">Rollercoaster months</div>
+      <p class="pain-desc">Some months you're slammed, others you're quiet. No consistent pipeline means no way to plan or grow.</p>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">💸</span>
+      <div class="pain-title">Paying for leads that go nowhere</div>
+      <p class="pain-desc">Monthly retainers, dead contacts, homeowners who never pick up. You pay whether the leads convert or not.</p>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">📵</span>
+      <div class="pain-title">Referrals dry up in slow season</div>
+      <p class="pain-desc">Word of mouth is great — until it isn't. When referrals slow down, there's no backup system to fall on.</p>
+    </div>
+    <div class="pain-card">
+      <span class="pain-icon">⏱️</span>
+      <div class="pain-title">No time to chase marketing</div>
+      <p class="pain-desc">You're running a crew, doing estimates, managing jobs. You don't have time to figure out Facebook ads or SEO.</p>
+    </div>
+  </div>
+</section>
+ 
 <section class="how" id="how">
   <div class="section-label">The Process</div>
   <h2>How it <em>works</em></h2>
@@ -676,7 +742,7 @@ footer .logo span { color: var(--orange); }
 <section class="cta-section" id="book">
   <h2>Ready to get<br><em>more jobs?</em></h2>
   <p>Book a free 15-minute call. No commitment, no pressure.</p>
-  <a href="https://cal.com/basillis/15min-google-meet-call" class="btn-cta-big">
+  <a href="YOUR_CAL_LINK_HERE" class="btn-cta-big">
     Book a Free Call
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
@@ -689,39 +755,6 @@ footer .logo span { color: var(--orange); }
 </footer>
  
 <script>
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
- 
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px';
-  cursor.style.top = my + 'px';
-});
- 
-function animateRing() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top = ry + 'px';
-  requestAnimationFrame(animateRing);
-}
-animateRing();
- 
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.width = '16px';
-    cursor.style.height = '16px';
-    ring.style.width = '52px';
-    ring.style.height = '52px';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.width = '10px';
-    cursor.style.height = '10px';
-    ring.style.width = '36px';
-    ring.style.height = '36px';
-  });
-});
  
 const themeToggle = document.getElementById('themeToggle');
 themeToggle.addEventListener('click', () => {
@@ -738,7 +771,7 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
  
-document.querySelectorAll('.stat, .niche-card, .step').forEach(el => {
+document.querySelectorAll('.stat, .niche-card, .step, .pain-card').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -748,4 +781,3 @@ document.querySelectorAll('.stat, .niche-card, .step').forEach(el => {
  
 </body>
 </html>
- 
