@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Basillis — Home Improvement Leads</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f0e0c'/><text y='.9em' font-size='72' x='8' font-family='Arial Black,sans-serif' font-weight='900' fill='%23f7f4ef'>B</text><circle cx='88' cy='78' r='10' fill='%23e05a1e'/></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,17 +35,12 @@ body.dark .logo { color: #f7f4ef; }
 body.dark .niche-card { background: #1a1816; }
 body.dark .btn-dark { background: #f7f4ef; color: #0f0e0c; }
 body.dark .btn-dark:hover { background: var(--orange); color: #fdfcfa; }
- 
-/* CTA section - white in light, black in dark */
+
+/* CTA - white in light, dark in dark */
 .cta-section { background: var(--paper) !important; }
-.cta-section h2 { color: var(--ink); }
-.cta-section p { color: var(--muted); }
+.cta-section h2 { color: var(--ink) !important; }
 body.dark .cta-section { background: #0f0e0c !important; }
-body.dark .cta-section h2 { color: #f7f4ef; }
-body.dark .cta-section p { color: rgba(247,244,239,0.5); }
-body.dark .cta-section::before { content: ''; }
-body:not(.dark) .cta-section h2 { color: var(--ink); }
-body:not(.dark) .cta-section p { color: var(--muted); }
+body.dark .cta-section h2 { color: #f7f4ef !important; }
  
 /* Footer - white in light, black in dark */
 footer { background: var(--paper); border-top: 1px solid var(--border); }
@@ -110,13 +106,33 @@ body.dark .step { background: #1a1816; }
 }
  
 .step-icon {
-  width: 44px; height: 44px;
+  width: 52px; height: 52px;
   background: var(--orange-dim);
-  border-radius: 10px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.step:hover .step-icon {
+  background: rgba(224,90,30,0.18);
+  transform: scale(1.08);
+}
+
+/* Global transitions */
+body, nav, .hero, .stats, .pain, .how, .niches, .trial-section, .testimonials, .cta-section, footer {
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.niche-card, .pain-card, .step, .testi-card, .trial-right, footer, nav {
+  transition: background 0.4s ease, border-color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.logo, .nav-link, .stat-num, .stat-label, .pain-title, .pain-desc, .step-title, .step-desc,
+.niche-name, .niche-desc, .testi-name, .testi-role, .testi-text, .trial-desc, .trial-list li {
+  transition: color 0.4s ease;
 }
  
 .step-title {
@@ -137,9 +153,9 @@ body.dark .step { background: #1a1816; }
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: none;
   transition: all 0.2s;
   font-size: 16px;
+  cursor: pointer;
 }
  
 .theme-toggle:hover { border-color: var(--orange); }
@@ -203,30 +219,13 @@ nav {
   transition: all 0.2s;
 }
  
-.btn-dark {
-  background: var(--ink);
-  color: var(--white);
-}
- 
+.btn-dark { background: var(--ink); color: var(--white); }
 .btn-dark:hover { background: var(--orange); transform: translateY(-1px); }
  
-.btn-orange {
-  background: var(--orange);
-  color: var(--white);
-}
+.btn-orange { background: var(--orange); color: var(--white); }
+.btn-orange:hover { background: #c94d18; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(224,90,30,0.3); }
  
-.btn-orange:hover {
-  background: #c94d18;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(224,90,30,0.3);
-}
- 
-.btn-outline {
-  background: transparent;
-  color: var(--ink);
-  border: 1.5px solid var(--border);
-}
- 
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
 .btn-outline:hover { border-color: var(--ink); transform: translateY(-1px); }
  
 /* HERO */
@@ -283,10 +282,7 @@ h1 {
   animation: up 0.8s ease forwards 0.2s;
 }
  
-h1 em {
-  font-style: normal;
-  color: var(--orange);
-}
+h1 em { font-style: normal; color: var(--orange); }
  
 .hero-sub-row {
   display: flex;
@@ -298,20 +294,8 @@ h1 em {
   animation: up 0.8s ease forwards 0.4s;
 }
  
-.hero-desc {
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--muted);
-  line-height: 1.65;
-  max-width: 460px;
-}
- 
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
+.hero-desc { font-size: 18px; font-weight: 400; color: var(--muted); line-height: 1.65; max-width: 460px; }
+.hero-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
  
 /* MARQUEE */
 .marquee-wrap {
@@ -327,7 +311,6 @@ h1 em {
  
 .marquee-track {
   display: flex;
-  gap: 0;
   animation: marquee 20s linear infinite;
   white-space: nowrap;
 }
@@ -351,7 +334,7 @@ h1 em {
   to { transform: translateX(-50%); }
 }
  
-/* STATS BAR */
+/* STATS */
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -361,8 +344,6 @@ h1 em {
 .stat {
   padding: 48px 56px;
   border-right: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
   transition: background 0.3s;
 }
  
@@ -382,25 +363,63 @@ h1 em {
 .stat-num span { color: var(--orange); }
 .stat-label { font-size: 13px; color: var(--muted); font-weight: 500; }
  
-/* NICHES */
-.niches {
-  padding: 120px 56px;
-  background: var(--cream);
-}
- 
+/* SECTION LABEL */
 .section-label {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--orange);
-  display: flex;
-  align-items: center;
-  gap: 10px;
   margin-bottom: 20px;
 }
  
-.section-label::before { content: ''; width: 24px; height: 1.5px; background: var(--orange); }
+/* PAIN POINTS */
+.pain { padding: 120px 56px; background: var(--paper); }
+ 
+.pain h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: -3px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+ 
+.pain h2 em { font-style: normal; color: var(--orange); }
+ 
+.pain-sub { font-size: 17px; color: var(--muted); max-width: 480px; line-height: 1.6; margin-bottom: 56px; }
+ 
+.pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+ 
+.pain-card { background: var(--cream); padding: 40px 36px; transition: background 0.3s; }
+.pain-card:hover { background: var(--border); }
+body.dark .pain-card { background: #1a1816; }
+body.dark .pain-card:hover { background: #222018; }
+ 
+.pain-icon {
+  width: 52px; height: 52px;
+  background: var(--orange-dim);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+ 
+.pain-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+ 
+.pain-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* NICHES */
+.niches { padding: 120px 56px; background: var(--cream); }
  
 .niches h2 {
   font-family: 'Syne', sans-serif;
@@ -414,11 +433,7 @@ h1 em {
  
 .niches h2 em { font-style: normal; color: var(--orange); }
  
-.niche-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
+.niche-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
  
 .niche-card {
   background: var(--white);
@@ -428,25 +443,149 @@ h1 em {
   transition: all 0.25s;
 }
  
-.niche-card:hover {
-  border-color: var(--orange);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(224,90,30,0.1);
-}
+.niche-card:hover { border-color: var(--orange); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(224,90,30,0.1); }
  
-.niche-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+.niche-icon {
+  width: 48px; height: 48px;
+  background: var(--orange-dim);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.niche-card:hover .niche-icon {
+  background: rgba(224,90,30,0.18);
+  transform: scale(1.1) rotate(-3deg);
+}
 .niche-name { font-weight: 800; font-size: 15px; color: var(--ink); letter-spacing: -0.3px; margin-bottom: 6px; }
 .niche-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
- 
+
+/* TRIAL SECTION */
+.trial-section { padding: 120px 56px; background: var(--paper); }
+.trial-section h2 { color: var(--ink); }
+.trial-section .trial-desc { color: var(--muted); }
+.trial-section .trial-list li { color: var(--ink); }
+.trial-right { background: #0f0e0c; border: 2px solid var(--orange); border-radius: 20px; padding: 48px; }
+.trial-big { color: var(--orange); }
+.trial-unit { color: rgba(247,244,239,0.5); }
+.trial-divider { background: rgba(247,244,239,0.1); }
+.trial-stat-num { color: #f7f4ef; }
+.trial-stat-label { color: rgba(247,244,239,0.5); }
+
+body.dark .trial-section { background: #0f0e0c; }
+body.dark .trial-section h2 { color: #f7f4ef; }
+body.dark .trial-section .trial-desc { color: rgba(247,244,239,0.55); }
+body.dark .trial-section .trial-list li { color: rgba(247,244,239,0.75); }
+body.dark .trial-right { background: #1a1816; border: 2px solid var(--orange); }
+
+.trial-section h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: -3px;
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+.trial-section h2 em { font-style: normal; color: var(--orange); }
+
+.trial-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 48px;
+}
+
+.trial-desc { font-size: 16px; line-height: 1.7; margin-top: 20px; margin-bottom: 28px; max-width: 440px; }
+
+.trial-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.trial-list li { font-size: 15px; font-weight: 500; }
+
+.trial-big {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 100px;
+  letter-spacing: -6px;
+  line-height: 1;
+}
+
+.trial-unit { font-size: 16px; margin-bottom: 32px; letter-spacing: 0.05em; }
+.trial-divider { height: 1px; margin-bottom: 28px; }
+.trial-stat { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+.trial-stat-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -1px; }
+.trial-stat-label { font-size: 13px; }
+
+/* TESTIMONIALS */
+.testimonials { padding: 120px 56px; background: var(--cream); }
+
+.testimonials h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(36px, 4vw, 56px);
+  letter-spacing: -3px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 56px;
+}
+
+.testimonials h2 em { font-style: normal; color: var(--orange); }
+
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+.testi-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 36px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 0.2s;
+}
+
+.testi-card:hover { transform: translateY(-4px); }
+body.dark .testi-card { background: #1a1816; }
+
+.testi-stars { color: var(--orange); font-size: 14px; letter-spacing: 2px; }
+.testi-text { font-size: 14px; color: var(--muted); line-height: 1.75; flex: 1; }
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.testi-avatar {
+  width: 40px; height: 40px;
+  background: var(--orange);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.testi-name { font-weight: 700; font-size: 14px; color: var(--ink); letter-spacing: -0.3px; }
+.testi-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
 /* CTA */
 .cta-section {
   padding: 120px 56px;
-  background: var(--ink);
   text-align: center;
   position: relative;
   overflow: hidden;
 }
- 
+
 .cta-section::before {
   content: '';
   position: absolute;
@@ -456,27 +595,21 @@ h1 em {
   background: radial-gradient(circle, rgba(224,90,30,0.15) 0%, transparent 70%);
   pointer-events: none;
 }
- 
+
 .cta-section h2 {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
   font-size: clamp(48px, 6vw, 88px);
   letter-spacing: -4px;
   line-height: 0.92;
-  color: var(--white);
-  margin-bottom: 24px;
+  color: var(--ink);
+  margin-bottom: 40px;
   position: relative;
+  transition: color 0.3s;
 }
- 
+
 .cta-section h2 em { font-style: normal; color: var(--orange); }
- 
-.cta-section p {
-  font-size: 18px;
-  color: rgba(253,252,250,0.5);
-  margin-bottom: 44px;
-  position: relative;
-}
- 
+
 .btn-cta-big {
   display: inline-flex;
   align-items: center;
@@ -492,89 +625,25 @@ h1 em {
   transition: all 0.2s;
   position: relative;
 }
- 
-.btn-cta-big:hover {
-  background: #c94d18;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(224,90,30,0.4);
-}
- 
-/* FOOTER handled by theme above */
+
+.btn-cta-big:hover { background: #c94d18; transform: translateY(-3px); box-shadow: 0 12px 40px rgba(224,90,30,0.4); }
+
+/* FOOTER */
 footer {
   padding: 36px 56px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
- 
+
 footer .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; text-decoration: none; }
 footer .logo span { color: var(--orange); }
- 
+
 @keyframes up {
   from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: translateY(0); }
 }
- 
-/* PAIN POINTS */
-.pain {
-  padding: 120px 56px;
-  background: var(--paper);
-}
- 
-.pain h2 {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: clamp(40px, 5vw, 64px);
-  letter-spacing: -3px;
-  line-height: 1;
-  color: var(--ink);
-  margin-bottom: 16px;
-}
- 
-.pain h2 em { font-style: normal; color: var(--orange); }
- 
-.pain-sub {
-  font-size: 17px;
-  color: var(--muted);
-  max-width: 480px;
-  line-height: 1.6;
-  margin-bottom: 56px;
-}
- 
-.pain-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
-}
- 
-.pain-card {
-  background: var(--cream);
-  padding: 40px 36px;
-  position: relative;
-  transition: background 0.3s;
-}
- 
-.pain-card:hover { background: var(--border); }
-body.dark .pain-card { background: #1a1816; }
-body.dark .pain-card:hover { background: #222018; }
- 
-.pain-icon {
-  font-size: 28px;
-  margin-bottom: 16px;
-  display: block;
-}
- 
-.pain-title {
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: -0.5px;
-  color: var(--ink);
-  margin-bottom: 10px;
-}
- 
-.pain-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
- 
+
 @media (max-width: 900px) {
   nav { padding: 0 20px; }
   .nav-link { display: none; }
@@ -585,23 +654,22 @@ body.dark .pain-card:hover { background: #222018; }
   .hero-actions .btn { width: 100%; justify-content: center; }
   .stats { grid-template-columns: 1fr; }
   .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 20px; }
-  .pain, .niches, .how, .cta-section { padding: 72px 20px; }
+  .pain, .niches, .how, .cta-section, .trial-section, .testimonials { padding: 72px 20px; }
   .pain-grid { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .niche-grid { grid-template-columns: repeat(2, 1fr); }
+  .trial-inner { grid-template-columns: 1fr; gap: 40px; }
+  .testi-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 20px; }
   .marquee-wrap { margin-top: 40px; }
   .btn-cta-big { width: 100%; justify-content: center; }
-  .theme-toggle { display: block; }
 }
 </style>
 </head>
 <body>
- 
-<div class="cursor" id="cursor" style="display:none"></div>
-<div class="cursor-ring" id="ring" style="display:none"></div>
+
 <script>document.body.classList.add('dark');</script>
- 
+
 <nav>
   <a href="#" class="logo">Basillis<span>.</span></a>
   <div class="nav-right">
@@ -610,7 +678,7 @@ body.dark .pain-card:hover { background: #222018; }
     <a href="#book" class="btn btn-dark">Book a Call</a>
   </div>
 </nav>
- 
+
 <section class="hero">
   <div class="hero-bg-text">LEADS</div>
   <div class="hero-eyebrow">
@@ -649,7 +717,7 @@ body.dark .pain-card:hover { background: #222018; }
     </div>
   </div>
 </section>
- 
+
 <div class="stats">
   <div class="stat">
     <div class="stat-num">10<span>–</span>15</div>
@@ -664,35 +732,43 @@ body.dark .pain-card:hover { background: #222018; }
     <div class="stat-label">Free trial, no fee on our end</div>
   </div>
 </div>
- 
+
 <section class="pain" id="pain">
   <div class="section-label">Sound Familiar?</div>
   <h2>The problems <em>we fix</em></h2>
   <p class="pain-sub">If you're a home improvement contractor, you've probably dealt with at least one of these.</p>
   <div class="pain-grid">
     <div class="pain-card">
-      <span class="pain-icon">🎢</span>
+      <span class="pain-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </span>
       <div class="pain-title">Rollercoaster months</div>
       <p class="pain-desc">Some months you're slammed, others you're quiet. No consistent pipeline means no way to plan or grow.</p>
     </div>
     <div class="pain-card">
-      <span class="pain-icon">💸</span>
+      <span class="pain-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </span>
       <div class="pain-title">Paying for leads that go nowhere</div>
       <p class="pain-desc">Monthly retainers, dead contacts, homeowners who never pick up. You pay whether the leads convert or not.</p>
     </div>
     <div class="pain-card">
-      <span class="pain-icon">📵</span>
+      <span class="pain-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </span>
       <div class="pain-title">Referrals dry up in slow season</div>
       <p class="pain-desc">Word of mouth is great — until it isn't. When referrals slow down, there's no backup system to fall on.</p>
     </div>
     <div class="pain-card">
-      <span class="pain-icon">⏱️</span>
+      <span class="pain-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </span>
       <div class="pain-title">No time to chase marketing</div>
       <p class="pain-desc">You're running a crew, doing estimates, managing jobs. You don't have time to figure out Facebook ads or SEO.</p>
     </div>
   </div>
 </section>
- 
+
 <section class="how" id="how">
   <div class="section-label">The Process</div>
   <h2>How it <em>works</em></h2>
@@ -700,7 +776,7 @@ body.dark .pain-card:hover { background: #222018; }
     <div class="step">
       <div class="step-num">01</div>
       <div class="step-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
       </div>
       <div class="step-title">We run the ads</div>
       <p class="step-desc">Facebook ads targeting homeowners in your service area actively looking for contractors right now.</p>
@@ -708,7 +784,7 @@ body.dark .pain-card:hover { background: #222018; }
     <div class="step">
       <div class="step-num">02</div>
       <div class="step-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
       </div>
       <div class="step-title">We filter every lead</div>
       <p class="step-desc">Real project, real homeowner, real timeline. Only leads ready for an estimate within 30 days reach you.</p>
@@ -716,52 +792,119 @@ body.dark .pain-card:hover { background: #222018; }
     <div class="step">
       <div class="step-num">03</div>
       <div class="step-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.12 1.18 2 2 0 012.1 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
       </div>
       <div class="step-title">You get the lead</div>
       <p class="step-desc">Qualified contacts delivered directly to you. You only pay for what you receive — no fluff, no dead contacts.</p>
     </div>
   </div>
 </section>
- 
+
 <section class="niches" id="niches">
   <div class="section-label">Who We Work With</div>
   <h2>Built for <em>every trade</em></h2>
   <div class="niche-grid">
-    <div class="niche-card"><span class="niche-icon">🏚️</span><div class="niche-name">Roofing</div><div class="niche-desc">Storm damage, replacements, repairs</div></div>
-    <div class="niche-card"><span class="niche-icon">🔲</span><div class="niche-name">Windows & Doors</div><div class="niche-desc">Replacements, upgrades, new installs</div></div>
-    <div class="niche-card"><span class="niche-icon">🔨</span><div class="niche-name">Remodeling</div><div class="niche-desc">Kitchen, bathroom, whole home</div></div>
-    <div class="niche-card"><span class="niche-icon">🏡</span><div class="niche-name">Fencing</div><div class="niche-desc">Residential installs and replacements</div></div>
-    <div class="niche-card"><span class="niche-icon">🎨</span><div class="niche-name">Painting</div><div class="niche-desc">Interior and exterior residential</div></div>
-    <div class="niche-card"><span class="niche-icon">🏗️</span><div class="niche-name">Concrete</div><div class="niche-desc">Driveways, patios, foundations</div></div>
-    <div class="niche-card"><span class="niche-icon">❄️</span><div class="niche-name">HVAC</div><div class="niche-desc">Installs, replacements, tune-ups</div></div>
-    <div class="niche-card"><span class="niche-icon">🟫</span><div class="niche-name">Flooring</div><div class="niche-desc">Hardwood, tile, vinyl, carpet</div></div>
+    <div class="niche-card"><span class="niche-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><div class="niche-name">Roofing</div><div class="niche-desc">Storm damage, replacements, repairs</div></div>
+    <div class="niche-card"><span class="niche-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></span><div class="niche-name">Windows & Doors</div><div class="niche-desc">Replacements, upgrades, new installs</div></div>
+    <div class="niche-card"><span class="niche-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span><div class="niche-name">Remodeling</div><div class="niche-desc">Kitchen, bathroom, whole home</div></div>
+    <div class="niche-card"><span class="niche-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span><div class="niche-name">Fencing</div><div class="niche-desc">Residential installs and replacements</div></div>
+    <div class="niche-card"><span class="niche-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><path d="M10 20v-5h4v5"/></svg></span><div class="niche-name">Painting</div><div class="niche-desc">Interior and exterior residential</div></div>
+    <div class="niche-card"><span class="niche-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span><div class="niche-name">Concrete</div><div class="niche-desc">Driveways, patios, foundations</div></div>
+    <div class="niche-card"><span class="niche-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12m0 0V2m0 10H2m10 0h10"/><circle cx="12" cy="12" r="3"/></svg></span><div class="niche-name">HVAC</div><div class="niche-desc">Installs, replacements, tune-ups</div></div>
+    <div class="niche-card"><span class="niche-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20M2 14h20M6 6v12M10 6v12M14 6v12M18 6v12"/></svg></span><div class="niche-name">Flooring</div><div class="niche-desc">Hardwood, tile, vinyl, carpet</div></div>
   </div>
 </section>
- 
+
+<section class="trial-section">
+  <div class="section-label">The Offer</div>
+  <div class="trial-inner">
+    <div class="trial-left">
+      <h2>10 days.<br><em>On us.</em></h2>
+      <p class="trial-desc">We don't ask you to trust us with your money before you've seen what we deliver. Run a free 10-day trial, receive real leads in your area, and decide after whether it's worth continuing.</p>
+      <ul class="trial-list">
+        <li>✓ No fee on our end for 10 days</li>
+        <li>✓ You cover a small Facebook ad budget</li>
+        <li>✓ We handle targeting, ads and filtering</li>
+        <li>✓ Leads delivered directly to you</li>
+        <li>✓ Pay per lead only if you continue</li>
+      </ul>
+      <a href="#book" class="btn btn-orange" style="margin-top:32px; display:inline-flex;">
+        Start Free Trial
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="trial-right">
+      <div class="trial-big">10</div>
+      <div class="trial-unit">days free</div>
+      <div class="trial-divider"></div>
+      <div class="trial-stat"><span class="trial-stat-num">30</span><span class="trial-stat-label">days — lead timeline</span></div>
+      <div class="trial-stat"><span class="trial-stat-num">0</span><span class="trial-stat-label">monthly retainer</span></div>
+      <div class="trial-stat"><span class="trial-stat-num">$0</span><span class="trial-stat-label">fee until trial ends</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="section-label">What Contractors Say</div>
+  <h2>Don't take <em>our word</em> for it</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I was skeptical at first — I've been burned by lead gen companies before. But the 10-day trial cost me nothing on their end, and the leads actually picked up the phone. First week I booked two jobs."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">M</div>
+        <div>
+          <div class="testi-name">Mike R.</div>
+          <div class="testi-role">Roofing Contractor, Columbus OH</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Finally a lead gen that charges per lead and not per month. Slow seasons used to kill us — now we have a consistent flow coming in. Simple and it works."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">J</div>
+        <div>
+          <div class="testi-name">Jason T.</div>
+          <div class="testi-role">Remodeling Contractor, Nashville TN</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The leads are qualified — homeowners with a real project and a real timeline. Not tire kickers. We went from 2-3 estimates a week to 6-8 without any extra work on our end."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">D</div>
+        <div>
+          <div class="testi-name">David K.</div>
+          <div class="testi-role">Fencing Contractor, Indianapolis IN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cta-section" id="book">
   <h2>Ready to get<br><em>more jobs?</em></h2>
-  <p>Book a free 15-minute call. No commitment, no pressure.</p>
   <a href="https://cal.com/basillis/15min-google-meet-call" class="btn-cta-big">
     Book a Free Call
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
 </section>
- 
+
 <footer>
   <a href="#" class="logo">Basillis<span>.</span></a>
   <p>© 2026 Basillis. All rights reserved.</p>
   <a href="mailto:nicholas@basillis.com">nicholas@basillis.com</a>
 </footer>
- 
+
 <script>
- 
 const themeToggle = document.getElementById('themeToggle');
 themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark');
   themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
 });
- 
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -770,14 +913,14 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.1 });
- 
-document.querySelectorAll('.stat, .niche-card, .step, .pain-card').forEach(el => {
+
+document.querySelectorAll('.stat, .niche-card, .step, .pain-card, .testi-card').forEach((el, i) => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = `opacity 0.6s ease ${(i % 4) * 0.1}s, transform 0.6s ease ${(i % 4) * 0.1}s`;
   observer.observe(el);
 });
 </script>
- 
+
 </body>
 </html>
