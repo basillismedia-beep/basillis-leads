@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Basillis — Home Improvement Lead Generation</title>
+<meta name="description" content="Basillis connects home improvement contractors with qualified homeowners. Pay per lead, no retainers, no contracts. Learn why we built it this way.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f0e0c'/><text y='.9em' font-size='72' x='8' font-family='Arial Black,sans-serif' font-weight='900' fill='%23f7f4ef'>B</text><circle cx='88' cy='78' r='10' fill='%23e05a1e'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0f0e0c;
+  --paper: #f7f4ef;
+  --cream: #efe9df;
+  --orange: #e05a1e;
+  --orange-dim: rgba(224,90,30,0.1);
+  --muted: #7a7469;
+  --border: rgba(15,14,12,0.1);
+  --white: #fdfcfa;
+}
+
+html { scroll-behavior: smooth; }
+
+body.dark {
+  --ink: #f7f4ef;
+  --paper: #0f0e0c;
+  --cream: #1a1816;
+  --muted: #8a8278;
+  --border: rgba(247,244,239,0.1);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+body.dark nav { background: rgba(15,14,12,0.9); }
+body.dark .logo { color: #f7f4ef; }
+body.dark .btn-dark { background: #f7f4ef; color: #0f0e0c; }
+body.dark .btn-dark:hover { background: var(--orange); color: #fdfcfa; }
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 56px;
+  height: 68px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(247,244,239,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.4s ease;
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+.logo span { color: var(--orange); }
+
+.nav-right { display: flex; align-items: center; gap: 32px; }
+
+.nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-link:hover { color: var(--ink); }
+.nav-link.active { color: var(--orange); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 22px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-dark { background: var(--ink); color: var(--white); }
+.btn-dark:hover { background: var(--orange); transform: translateY(-1px); }
+
+.theme-toggle {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover { border-color: var(--orange); }
+
+/* HERO */
+.about-hero {
+  padding: 160px 56px 80px;
+  max-width: 880px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+
+.about-hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 6vw, 76px);
+  letter-spacing: -3px;
+  line-height: 0.98;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+
+.about-hero h1 em { font-style: normal; color: var(--orange); }
+
+.about-hero .lede {
+  font-size: 19px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* STORY SECTION */
+.story {
+  padding: 40px 56px 100px;
+  max-width: 760px;
+}
+
+.story p {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+
+.story p.muted { color: var(--muted); }
+
+.story strong { font-weight: 700; }
+
+.pull-quote {
+  border-left: 3px solid var(--orange);
+  padding-left: 28px;
+  margin: 48px 0;
+}
+
+.pull-quote p {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* VALUES GRID */
+.values {
+  padding: 100px 56px;
+  background: var(--cream);
+  transition: background 0.4s ease;
+}
+
+.values h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -2px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 48px;
+}
+
+.values h2 em { font-style: normal; color: var(--orange); }
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.value-card {
+  background: var(--white);
+  padding: 40px 32px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  transition: background 0.4s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.value-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(224,90,30,0.1);
+}
+
+body.dark .value-card { background: #1a1816; }
+
+.value-icon {
+  width: 48px; height: 48px;
+  background: var(--orange-dim);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.value-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.3px;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.value-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* CTA */
+.cta-section {
+  padding: 120px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(224,90,30,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-section h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 5vw, 72px);
+  letter-spacing: -3px;
+  line-height: 0.95;
+  color: var(--ink);
+  margin-bottom: 40px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.cta-section h2 em { font-style: normal; color: var(--orange); }
+
+.btn-cta-big {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--orange);
+  color: var(--white);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  padding: 16px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.btn-cta-big:hover { background: #c94d18; transform: translateY(-3px); box-shadow: 0 12px 40px rgba(224,90,30,0.4); }
+
+/* FOOTER */
+footer {
+  padding: 36px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--paper);
+  border-top: 1px solid var(--border);
+  transition: background 0.4s ease;
+}
+
+footer .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; text-decoration: none; color: var(--muted); }
+footer .logo span { color: var(--orange); }
+footer p { color: var(--muted); font-size: 13px; }
+footer a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+footer a:hover { color: var(--ink); }
+
+body.dark footer { background: #080807; border-top: 1px solid rgba(255,255,255,0.05); }
+body.dark footer .logo { color: rgba(247,244,239,0.4); }
+body.dark footer p { color: rgba(247,244,239,0.2); }
+body.dark footer a { color: rgba(247,244,239,0.35); }
+body.dark footer a:hover { color: #f7f4ef; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-link { display: none; }
+  .about-hero { padding: 110px 20px 50px; }
+  .story { padding: 20px 20px 72px; }
+  .values { padding: 72px 20px; }
+  .values-grid { grid-template-columns: 1fr; gap: 12px; }
+  .cta-section { padding: 80px 20px; }
+  .pull-quote p { font-size: 21px; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<script>document.body.classList.add('dark');</script>
+
+<nav>
+  <a href="index.html" class="logo">Basillis<span>.</span></a>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">☀️</button>
+    <a href="index.html#niches" class="nav-link">Niches</a>
+    <a href="index.html#book" class="btn btn-dark">Book a Call</a>
+  </div>
+</nav>
+
+<section class="about-hero">
+  <div class="section-label">About Basillis — Founded 2024</div>
+  <h1>Built by someone<br>who got <em>tired of</em><br>empty promises.</h1>
+  <p class="lede">Basillis exists because most lead generation for contractors is broken — built around retainers, not results. Here's why we did it differently.</p>
+</section>
+
+<section class="story">
+  <p>I started Basillis in 2024 after seeing how many home improvement contractors get stuck on the same hamster wheel — busy one month, dead quiet the next, with referrals as the only real source of new work. Most marketing agencies pitch them monthly retainers and promise "exposure," then disappear after the contract is signed, whether the leads actually convert or not.</p>
+
+  <p>That setup doesn't make sense for a contractor. You shouldn't pay a marketing company the same amount whether they send you ten great homeowners or zero.</p>
+
+  <div class="pull-quote">
+    <p>So Basillis works the other way around — you only pay when we actually deliver a qualified lead.</p>
+  </div>
+
+  <p class="muted">No retainer. No contract. No "trust the process" for three months while nothing happens. We run targeted ads, filter out anyone who isn't a real homeowner with a real project on a real timeline, and the only person who lands in your inbox is someone worth calling.</p>
+
+  <p>Before you commit to anything, you can test it for 10 days completely free on our end — you just cover a small ad budget. If the leads aren't worth it, you walk away. If they are, you keep going. Simple as that.</p>
+
+  <p>We work with roofing, fencing, remodeling, and other home improvement trades across the US — one contractor per market at a time, so the leads we generate for you aren't being split with your competitor down the street.</p>
+</section>
+
+<section class="values">
+  <h2>What we <em>actually</em> believe</h2>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      </div>
+      <div class="value-title">Pay for results, not promises</div>
+      <p class="value-desc">If a lead isn't qualified, you don't pay for it. That's the whole model — there's no incentive for us to send you junk.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="value-title">No 3-month trust falls</div>
+      <p class="value-desc">You see real leads in the first 10 days. If it's not working, you'll know fast — not after a quarter of wasted ad spend.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e05a1e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="value-title">One contractor per market</div>
+      <p class="value-desc">We don't sell the same leads to five competing companies in your city. If we're working with you, we're not working against you.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="book">
+  <h2>Want to see it<br><em>for yourself?</em></h2>
+  <a href="https://cal.com/basillis/15min-google-meet-call" class="btn-cta-big">
+    Book a Free Call
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</section>
+
+<footer>
+  <a href="index.html" class="logo">Basillis<span>.</span></a>
+  <p>© 2026 Basillis. All rights reserved.</p>
+  <a href="mailto:nicholas@basillis.com">nicholas@basillis.com</a>
+</footer>
+
+<script>
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+});
+</script>
+
+</body>
+</html>
