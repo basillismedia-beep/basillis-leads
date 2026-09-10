@@ -182,7 +182,10 @@ body {
   gap: 8px;
   padding: 0 20px;
   text-align: center;
+  transition: transform 0.3s ease;
 }
+
+body.scrolled .announce { transform: translateY(-100%); }
 
 .announce a {
   color: var(--white);
@@ -222,7 +225,10 @@ nav {
   background: rgba(247,244,239,0.88);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
+  transition: top 0.3s ease;
 }
+
+body.scrolled nav { top: 0; }
  
 .logo {
   font-family: 'Syne', sans-serif;
@@ -1128,6 +1134,10 @@ themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark');
   themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
 });
+
+window.addEventListener('scroll', () => {
+  document.body.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
